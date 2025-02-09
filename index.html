@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="//cdn.jsdelivr.net/npm/@clappr/player@0.8/dist/clappr.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/@swarmcloud/hls/p2p-engine.min.js"></script>
+<style>body,html{margin:0;padding:0;width:100%;height:100%;overflow:hidden}#player{position:absolute;top:0;left:0;width:100%;height:100%}.media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar]{height:5px!important}.media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar]:hover .bar-background[data-seekbar]{height:7px!important}.media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar] .bar-fill-1[data-seekbar]{background-color:red!important}.media-control[data-media-control] .media-control-layer[data-controls] .bar-container[data-seekbar] .bar-background[data-seekbar]{background-color:rgba(255,255,255,0.2)!important}</style>
+  <link rel="icon" href="https://s3.us-east-1.amazonaws.com/forofms.na/monthly_2024_07/large.WINPLAY.jpeg.5c36fc8db28ed37405db7e8318761382.jpeg">
+    <title>Win Play</title>
+</head>
+<body>
+<div id="player"></div>
+<script>
+    var playbackURL = "https://coeld.pricesaskeloadsc.com:443/global/winplusonline1/index.m3u8?token=bb341ad05a27f06771ea2ca239f3d2df239f7228-c7-1739155623-1739123223";
+    var p2pConfig = {
+        live: true,
+        trackerZone: 'us',    
+    }
+    P2PEngineHls.tryRegisterServiceWorker(p2pConfig).then(() => {
+        var player = new Clappr.Player({
+            source: playbackURL,
+            parentId: "#player",
+            poster: '',
+            width: '100%',
+            height: '100%',
+            autoPlay: false,
+            plugins: [],
+        });
+        p2pConfig.hlsjsInstance = player.core.getCurrentPlayback()?._hls;
+        var engine = new P2PEngineHls(p2pConfig);
+    });
+</script>
+</body>
+</html>
